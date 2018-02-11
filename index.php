@@ -1,68 +1,42 @@
 <?php
-class  Car {
+//sql_autoload_register(function () {
+//$file = "{$className}.php";
+//if (!file_exists($file)){
+//    die("{$file} not found");
+//}
+//require $className . '.php';
+//});
+//function __autoload($className)
+//{
+//    $file = "{$className}.php";
+//    if (!file_exists($file)){
+//        die("{$file} not found");
+//    }
+//    require $className . '.php';
+//}
 
-    public $brand = 123;
-    public $model;
-    private $price;
-    private $state = 'static';
 
-    public function __construct($brand, $model)
-    {
-        $this->brand = $brand;
-        $this->model = $model;
-
-    }
-
-    public function __destruct()
-    {
-
-    }
-
-   // function test() {
-   //     $this->brand;
-    //}
-    function drive()
-    {
-       $this->state = 'moving';
-    }
-    function stop()
-    {
-        if ($this->isMoving()) {
-            echo 'You are not moving';
-        } else {
-            $this->state = 'static';
-        }
-    }
-    function isMoving()
-    {
-        return $this->state != 'moving';
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price)
-    {
-        if(!is_numeric($price)){
-            die('Invalid price');
-        }
-        $this->price = $price;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-}
-$car1 = new Car('Mazda', 6);
+//$className = 'Car';
+require 'Car1.php';
+require 'Figure.php';
+$car1 = new One\Car('Mazda', 6);
 $car1->setPrice(1000);
+//$car1->drive();
 
 
-$car2 = new Car('BMW', 6);
+$car2 = new One\Car('BMW', 6);
 var_dump($car1, $car2);
+$figureNames = ['Circl','Trander'];
+$lenght = count($figureNames);
+$figures = [];
+for ($i = 1; $i <= 10; $i++) {
+     $index = rand(0, $lenght - 1);
+     $figure = $figures[$index];
+     $figure = new $figure();
+     $figures[] = $figure;
+}
+var_dump($figures);
+
 
 ?>
 

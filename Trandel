@@ -1,0 +1,8 @@
+<?php
+class Trandel extends Figure
+{
+    public function getName()
+    {
+        echo 'Trander';
+    }
+}
