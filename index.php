@@ -15,9 +15,34 @@ spl_autoload_register(function  ($className) {
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', __DIR__ . DS);
 define('VIEW_DIR', ROOT . 'View' . DS);
-$request = new Framework\Request($_GET, $_POST, $_FILES);
+
+$dbConfig = [
+    'user' => 'root',
+    'pass' => '',
+    'host' => 'localhost',
+    'dbname' => 'news'
+];
+$dsn = "mysql: host={$dbConfig['host']}; dbname={$dbConfig['dbname']};";
+
+$request = new \Framework\Request($_GET, $_POST, $_FILES);
+
+$dbConection = new\PDO($dsn, $dbConfig['user'], $dbConfig['pass']);
+$dbConection->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
+
+$controller = $request->get('controller', 'Default');
+$action = $request->get('action', 'index');
+
+$controller = '\\Controller\\'. $controller . 'Controller';
+$controller = new $controller();
+
+$action .= 'Action'; //feedback action
+
+if (!method_exists($controller, '$action')) {
+    throw new \Exception("Action {$action} Not found");
+};
+
+$content = $controller->$action;
+
 
 require VIEW_DIR . 'layout.phtml';
 
-var_dump($request);
-echo 'init';

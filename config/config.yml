@@ -1,0 +1,103 @@
+parameters:
+    database_user: 'root'
+    database_name: 'news'
+    database_host: 'localhost'
+    database_password: ~
+    uploads_dir: 'uploads'
+    noreply_email: 'noreply@mvc.com'
+    some_api_key: '5sdf7hsf5s76f5hs7d5f'
+
+routing:
+    test_route:
+        pattern: /test/{one}/bar/{two}
+        controller: TestController
+        action: testAction
+        parameters:
+            one: '[0-9]+'
+            two: '[a-z]+'
+    homepage:
+        pattern: /
+        controller: DefaultController
+        action: indexAction
+    books_list:
+        pattern: /books
+        controller: BookController
+        action: indexAction
+    feedback:
+        pattern: /feedback
+        controller: DefaultController
+        action: feedbackAction
+    sign_in:
+        pattern: /sign-in
+        controller: SecurityController
+        action: loginAction
+
+    book_item:
+        pattern: /book/{id}
+        controller: BookController
+        action: showAction
+        parameters:
+            id: '[0-9]+'
+    cart_add:
+        pattern: /add-to-cart/{id}
+        controller: CartController
+        action: addAction
+        parameters:
+            id: '[0-9]+'
+
+    cart_list:
+        pattern: /cart
+        controller: CartController
+        action: indexAction
+
+    pdf_export:
+        pattern: /pdf-export
+        controller: BookController
+        action: pdfExportAction
+
+    zip_composer:
+        pattern: /zip
+        controller: DefaultController
+        action: zipAction
+
+    admin_homepage:
+        pattern: /admin
+        controller: Admin\DefaultController
+        action: indexAction
+
+    api_feedback:
+        pattern: /api/feedback
+        controller: DefaultController
+        action: apiFeedbackAction
+
+    api_books_list:
+        pattern: /api/books
+        controller: BookController
+        action: apiIndexAction
+
+    api_first:
+        pattern: /api/first/{a}
+        controller: APIController
+        action: firstAction
+        parameters:
+            a: '[0-9]+'
+
+    api_second:
+        pattern: /api/second
+        controller: APIController
+        action: secondAction
+
+    # api_books:
+    #     pattern: /api/books
+    #     controller: API\BookController
+    #     action: indexAction
+
+    # api_book:
+    #     pattern: /api/books/{id}
+    #     controller: API\BookController
+    #     action: showAction
+    #     parameters:
+    #         id: '[0-9]+'
+
+# GET, PUT, PATCH, DELETE /books/3
+# GET, POST /books

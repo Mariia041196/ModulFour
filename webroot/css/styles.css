@@ -1,0 +1,19 @@
+body {
+    padding-top: 5rem;
+}
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.book-item {
+    margin: 0 10px 10px 0;
+}
+
+.form-alert:empty {
+    display: none;
+}
+
+.book-item-template {
+    display: none;
+}

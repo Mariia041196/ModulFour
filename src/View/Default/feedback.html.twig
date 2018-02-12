@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Feedback page</h1>
+
+    <div class="alert form-alert"></div>
+
+    <form method='post' class='feedback-form'>
+        <input class="form-control" type="text" name="email" value="{{ form.email }}"/>
+        <br>
+        <textarea class="form-control" name="message">{{ form.message }}</textarea>
+        <br>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+{% endblock %}

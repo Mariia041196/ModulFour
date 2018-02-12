@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Books list</h1>
+
+
+    <div class="card col-md-3 book-item book-item-template">
+        <img class="card-img-top" src="http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+            <a href="" class="btn btn-primary details">Details</a>
+            <a href="" class="btn btn-primary add-to-cart">Add to cart</a>
+            <hr>
+            <button class="btn btn-success test-button" type="button">Test</button>
+        </div>
+    </div>
+
+    <span data-page="1" id="current-page-holder"></span>
+
+    <div class="row books-list">
+
+        {% for book in books %}
+
+            <div class="card col-md-3 book-item">
+                <img class="card-img-top" src="http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}: {{ book.price }}</h5>
+                    <p class="card-text">{{ book.description|slice(0,100) }}</p>
+                    <a href="/book/{{ book.id }}" class="btn btn-primary details">Details</a>
+                    <a href="/add-to-cart/{{ book.id }}" class="btn btn-primary">Add to cart</a>
+                    <hr>
+                    <button class="btn btn-success test-button" type="button">Test</button>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+    <div class='row'>
+        <button type="button" class="btn btn-lg btn-success offset-md-3 col-md-3" id='load-books'>Load more</button>
+
+    </div>
+    <br>
+    <br>
+    {#{% for button in pagination %}#}
+    {#    {% if button.isActive %}#}
+    {#        <a href = '?page={{ button.page }}'>{{ button.text }}</a>#}
+    {#    {% else %}#}
+    {#        <span style="color:#555555">{{ button.text }}</span>#}
+    {#    {% endif %}#}
+    {#{% endfor %}#}
+
+{% endblock %}

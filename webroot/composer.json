@@ -1,0 +1,13 @@
+{
+  "require": {
+    "twig/twig": "^1.35",
+    "symfony/var-dumper": "^3.4",
+    "symfony/yaml": "^3.3",
+    "phpunit/phpunit": "^4.8",
+    "setasign/fpdf": "^1.8",
+    "phpacademy/helloworld2": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {"": "src/"}
+  }
+}
