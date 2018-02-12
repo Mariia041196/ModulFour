@@ -22,7 +22,7 @@ require 'Figure.php';
 $car1 = new One\Car('Mazda', 6);
 $car1->setPrice(1000);
 //$car1->drive();
-
+echo $car1::SOME_VALUE;
 
 $car2 = new One\Car('BMW', 6);
 var_dump($car1, $car2);

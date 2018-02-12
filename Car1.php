@@ -1,7 +1,7 @@
 <?php
 namespace One;
 class  Car {
-
+    const SOME_VALUE = 256;
     public $brand = 123;
     public $model;
     private $price;
