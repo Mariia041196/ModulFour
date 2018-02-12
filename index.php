@@ -1,43 +1,23 @@
 <?php
-//sql_autoload_register(function () {
-//$file = "{$className}.php";
-//if (!file_exists($file)){
-//    die("{$file} not found");
-//}
-//require $className . '.php';
-//});
-//function __autoload($className)
-//{
-//    $file = "{$className}.php";
-//    if (!file_exists($file)){
-//        die("{$file} not found");
-//    }
-//    require $className . '.php';
-//}
+spl_autoload_register(function  ($className) {
+    $file = "{$className}.php";
 
+    $file = str_replace(
+        '\\',
+        DIRECTORY_SEPARATOR,
+        $file
+    );
+    if (!file_exists($file)){
+        throw new \Exception("{$file} not found");
+    }
+    require_once $file;
+});
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', __DIR__ . DS);
+define('VIEW_DIR', ROOT . 'View' . DS);
+$request = new Framework\Request($_GET, $_POST, $_FILES);
 
-//$className = 'Car';
-require 'Car1.php';
-require 'Figure.php';
-$car1 = new One\Car('Mazda', 6);
-$car1->setPrice(1000);
-//$car1->drive();
-echo $car1::SOME_VALUE;
+require VIEW_DIR . 'layout.phtml';
 
-$car2 = new One\Car('BMW', 6);
-var_dump($car1, $car2);
-$figureNames = ['Circl','Trander'];
-$lenght = count($figureNames);
-$figures = [];
-for ($i = 1; $i <= 10; $i++) {
-     $index = rand(0, $lenght - 1);
-     $figure = $figures[$index];
-     $figure = new $figure();
-     $figures[] = $figure;
-}
-var_dump($figures);
-
-
-?>
-
-
+var_dump($request);
+echo 'init';

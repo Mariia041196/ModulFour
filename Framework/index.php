@@ -29,13 +29,12 @@ $form = new Feedback ($request->post('email'),
  if ($request->isPost()) {
      if($form->isValid()) {
         echo 'Valid';
-         $query = 'insert into feedback (email, message)
-values (:email, :message)';
-
-         $sth = $pdo->prepare('$query');
+         $sql = 'insert into feedback (email, message) values (:email, :message)';
+         $sth = $pdo->prepare($sql);
          $sth->execute([
              'email' => $form->email,
              'message' => $form->message
+			 
          ]);
      }
  }
